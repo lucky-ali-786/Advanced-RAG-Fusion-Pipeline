@@ -62,11 +62,11 @@ def reciprocal_rank_fusion(list_of_ranked_lists, k=60):
     return final_fused_chunks
 result__final=reciprocal_rank_fusion(result_final)
 result2="\n\n".join(result__final)
-SYSTEM_PROMPT2=f""
-"YOU ARE A AI AGENT WHICH HANDLES USER QUERY WITH THE HELP OF THE GIVEN DATA BELOW"
+SYSTEM_PROMPT2=f"""
+YOU ARE A AI AGENT WHICH HANDLES USER QUERY WITH THE HELP OF THE GIVEN DATA BELOW"
 {result2}
-"- RULE FOR FINAL OUTPUT: the Content MUST be formatted as clean, readable Markdown text (using bullet points). DO NOT output nested JSON, dictionaries, or raw arrays in the final content."
-""
+"- RULE FOR FINAL OUTPUT: the Content MUST be formatted as clean, readable Markdown text (using bullet points). DO NOT output nested JSON, dictionaries, or raw arrays in the final content.
+"""
 client2 = genai.Client(api_key="")
 content=client2.models.generate_content(
      model="gemini-2.5-flash", # Using flash for better reasoning capability
